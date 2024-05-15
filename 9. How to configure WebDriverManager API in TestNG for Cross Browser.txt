@@ -1,0 +1,46 @@
+**********  We Need to configer WebDriverManager for Cross Browser testing *******
+
+--> Need to download the "Dependency" from the MVN Repository
+--> Get the letest dependency from there
+
+The dependency looks like:
+
+<!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+<dependency>
+    <groupId>io.github.bonigarcia</groupId>
+    <artifactId>webdrivermanager</artifactId>
+    <version>5.7.0</version>
+</dependency>
+
+
+
+--> Add those in the "Pom.xml" file
+
+
+
+Code: 
+
+Since we will open the website in the @BeforeClass Method, let's change the driver in it
+
+
+	@BeforeClass(alwaysRun = true)
+	public void beforeClass() {
+		
+		// ************ Here setting "Chrome Browser"
+		WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver();
+		
+		// ************ Here setting "Firefox Browser"
+		WebDriverManager.firefoxdriver().setup();
+		driver = new FirefoxDriver();
+			
+		driver.get("https://www.selenium.dev/");
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+
+	}
+
+
+
+
+

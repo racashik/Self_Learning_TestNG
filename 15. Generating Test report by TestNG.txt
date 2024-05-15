@@ -1,0 +1,44 @@
+********* Generating Report by TestNG ***********
+
+--> To generate report we have to use the keyword
+	Reporter.log(" ", True);
+
+--> Here Inside the (" Cotation ") we can write the message which wants to print
+--> And it the Boolean value makes "true" that message will print on the Console also
+--> If makes "false", will print in the report output only
+
+
+Class Code: 
+
+
+	@Test
+	public void test1() throws InterruptedException {
+		
+	// **** Here Below just making a String and print in the Reoprt and console as well *********
+
+		Reporter.log("Visiting the google website and printing it's title", false);
+		
+		WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver();
+		driver.get("https://www.google.com/");
+		String title = driver.getTitle();
+	
+	// ***** Here showing the title we found from the website and print in the Reoprt and console as well *******
+	
+		Reporter.log("Current Website Title is: "+ title, true);
+		
+		Thread.sleep(2000);
+		driver.close();
+	}
+
+
+
+
+
+--> For seeing the report, we will have to regresh the "Maven Project"
+--> Go to "Test-Output" file
+--> Go to "index.html" it will be opened on browser
+	--> Click on "Reporter Output"
+--> Ye can see the Email Able Report from "emailable-report.html" file
+
+

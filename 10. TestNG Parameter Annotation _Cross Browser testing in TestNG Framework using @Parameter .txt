@@ -1,0 +1,103 @@
+**************** 10 TestNG Parameter Annotation  Cross Browser testing in TestNG Framework using @Parameter  **********
+
+--> Here we will pass "Parameter" value from the "testng.xml" file
+--> Will mention the browser name from the ".XML" file so it will be more easier to execute the code
+ N.B: The <parameter> Tag should use before the <Class> tag in .XML file, so it the pass the parameter value first
+
+
+.XML Code:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
+
+	*********** Use the same Name insude the "@Parameter" in class method **********
+	<parameter name="browser" value="chrome"/>
+
+    <classes> 
+      <class name="root.Testcase1"></class>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
+
+
+
+Class Code: 
+
+	@Parameters("browser")
+	public void beforeClass(String browser) {
+		
+		// ************ Here using the IF condition to check which parameter value we are passing
+		// Since we used "equalsIgnoreCase" it is now not case sensative
+
+		if(browser.equalsIgnoreCase("chrome")) {
+			WebDriverManager.chromedriver().setup();
+			driver = new ChromeDriver();
+		}else if(browser.equalsIgnoreCase("Firefox")) {
+			WebDriverManager.firefoxdriver().setup();
+			driver = new FirefoxDriver();
+		}
+			
+		driver.get("https://www.selenium.dev/");
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+
+	}
+
+
+
+Note: If we use @Parameter annotation, must run the code from the ".XML" file
+
+
+
+
+--> Now let's run the test on two browser from the .XML file
+
+.XML Code:
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+
+// ******* Test name should be different as this one is "Test For Chrome" ********	
+// *********** Here passing value = chrome so will run on Chrome Browser ********
+
+  <test thread-count="5" name="Test For Chrome">
+	<parameter name="browser" value="Chrome"/>
+    <classes> 
+      <class name="root.Testcase1"></class>
+    </classes>
+  </test> <!-- Test -->
+  
+
+//******* Test name should be different as this one is "Test For Firefox" ********
+// *********** Here passing "value = Firefox" so will run on Firefox Browser ********
+
+  <test thread-count="5" name="Test for Firefox">
+	<parameter name="browser" value="Chrome"/>
+    <classes> 
+      <class name="root.Testcase1"></class>
+    </classes>
+  </test> <!-- Test -->
+  
+  
+  
+</suite> <!-- Suite -->
+
+
+
+
+
+NOTE: We can set more in condition into the class for more browser and can make more TEST in the .XML file to run 
+on more browser together 
+
+
+
+
+
+
+
+
+

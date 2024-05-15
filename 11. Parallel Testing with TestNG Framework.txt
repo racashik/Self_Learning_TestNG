@@ -1,0 +1,67 @@
+*************  11 Parallel Testing with TestNG Framework  How to run Test Cases in Parallel *******
+
+Note: Using Parallel execution we can reduce the time, here both Test case will run together
+Note2: We must have to execute the test from the ".XML" file. If execute from the class, will run one by one not Parallely 
+
+--> Create a package and class for Parallel practice
+--> make to method test1, and test2
+--> Convert this class file into "TestNG"
+	--> Set any new "Suite name" (Parallel Testing)
+	--> Set any new "Test Name" (Test Parallel)
+	--> Class selection: Classes
+	--> Parallel Mode: Methods
+	--> Thread Count: 2
+
+
+.XML Code:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite parallel="methods" name="Parallel Testing">
+  <test parallel="methods" name="Test Parallel">
+    <classes>
+      <class name="Paralleltest.Paralleldemo"/>
+    </classes>
+  </test> <!-- Test Parallel -->
+</suite> <!-- Parallel Testing -->
+
+
+
+
+Class Code:
+
+
+public class Paralleldemo {
+	
+	WebDriver driver = null;
+	
+	
+	@Test
+	public void test1() throws InterruptedException {
+		System.out.println("Test1 Execution ");
+		WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver();
+		driver.get("https://www.google.com/");
+		Thread.sleep(2000);
+		driver.close();
+	}
+	
+	
+	@Test
+	public void test2() throws InterruptedException {
+		System.out.println("Test2 Execution ");
+		WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver();
+		driver.get("https://www.google.com/");
+		Thread.sleep(2000);
+		driver.close();
+	}
+}
+
+
+
+
+
+
+
+

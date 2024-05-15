@@ -1,0 +1,118 @@
+Course link: https://www.youtube.com/watch?v=TfQjHsOGLsc&list=PLAkEcrdilZ4nPiI-30WdK6FPs35AHR5QO
+
+// *********** Why use TestNG *************
+
+TestNG (Test Next Generation) is a popular testing framework for Java. 
+When it comes to Selenium, TestNG offers several advantages:
+
+1) Annotations: TestNG provides powerful annotations like 
+@Test, @BeforeSuite, @AfterSuite, @BeforeTest, @AfterTest, @BeforeClass, @AfterClass, @BeforeMethod, and @AfterMethod, 
+which make test code organization and execution flow management more structured and flexible.
+
+
+2) Parameterization: TestNG allows parameterization of test methods, which means you can run the same test method 
+with different sets of data, enhancing test coverage and efficiency.
+
+
+3) Dependency Testing: TestNG enables you to define dependencies between test methods, 
+ensuring that certain tests run only if the prerequisite tests pass. 
+This feature helps in maintaining test suite integrity and efficiency.
+
+
+4) Grouping: TestNG allows grouping of test methods, which can be helpful for running specific sets of tests 
+(e.g., smoke tests, regression tests) based on requirements.
+
+
+5) Parallel Execution: TestNG supports parallel execution of tests across multiple threads or processes, 
+thereby reducing the overall test execution time and speeding up feedback.
+
+
+6) Listeners: TestNG provides the ability to implement listeners, which can be used to perform actions at 
+various stages of test execution, such as logging, reporting, or taking screenshots.
+
+
+7) Reporting: TestNG generates detailed HTML reports with information about test execution results, 
+including pass/fail status, execution time, and error messages, making it easier to analyze and debug test failures.
+
+
+8) Integration with IDEs and Build Tools: TestNG integrates seamlessly with popular Java IDEs like 
+Eclipse, IntelliJ IDEA, and build tools like Maven and Gradle, simplifying test development, 
+execution, and integration into the CI/CD pipeline.
+
+
+
+Overall, TestNG enhances the efficiency, flexibility, and manageability of Selenium tests in Java, 
+making it a preferred choice for many automation testers and developers.
+
+
+
+
+
+
+// *********** priority order of some commonly used TestNG annotations  ************
+
+
+
+In TestNG, the priority of annotations determines their execution order. 
+Annotations with higher priority values are executed first. 
+If multiple annotations have the same priority, they are executed in alphabetical order.
+
+
+Here's the priority order of some commonly used TestNG annotations:
+
+1) @BeforeSuite and @AfterSuite: These are executed before and after all tests in a suite, respectively. 
+They have the highest priority.
+
+
+2) @BeforeTest and @AfterTest: These are executed before and after all the test methods belonging to a <test> tag 
+in the testng.xml file, respectively.
+
+
+3) @BeforeClass and @AfterClass: These are executed before and after executing all the test methods in a test class,
+respectively.
+
+
+4) @BeforeMethod and @AfterMethod: These are executed before and after each test method, respectively. 
+They have the lowest priority.
+
+
+5) @Test: The priority of the @Test annotation can be explicitly set using the priority attribute. 
+By default, if not specified, the priority is set to 0. Test methods with higher priority values 
+are executed before those with lower priority values.
+
+
+If multiple methods have the same priority, they are executed in the order they are found in the source file 
+or alphabetically if they are in different classes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
