@@ -1,0 +1,80 @@
+// We can use Data Driven / Data Provider to inject multiple data to make multiple test
+// i.e: We have 100 username and password, that need to use to check a login form
+// If we use theme one by one, the code will be larger but using DataDriven technic we can test very easily
+
+// Following DataProvider method use to provide the "User Credentials" data from the same calss
+
+
+
+package DataDriven;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class DataInput {
+
+	WebDriver driver;
+
+
+	// ********** Here making the DataProvider annotation which contain 2D array of data *************
+	// ******** Use the DataProvider "name" inside that method where want to inject the data ************
+	// ******** Since we have multiple data / Array of data, that's why used the Array structure  "Object[][]" **********
+	
+	@DataProvider(name = "InputData")
+	Object[][] userData() {
+
+		Object[][] dataSetObjects = { 
+				{ "standard_user", "secret_sauce" }, 
+				{ "locked_out_user", "secret_sauce" }, 
+				{ "problem_user", "secret_sauce" }, 
+				{ "performance_glitch_user", "secret_sauce" }, 
+				{ "error_user", "secret_sauce" }, 
+				{ "visual_user", "secret_sauce" } 
+				};
+
+		return dataSetObjects;
+	}
+
+	@BeforeMethod
+	@Test
+	public void Test1() {
+		WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver();
+		driver.get("https://www.saucedemo.com/");
+	}
+
+	@AfterMethod
+	@Test
+	public void Test2() throws InterruptedException {
+		Thread.sleep(2000);
+		driver.quit();
+	}
+	
+
+	// ********* Here using the "dataProvider Name" to get data **********
+
+	@Test(dataProvider = "InputData")
+
+	// **********  Since we have 2 data for each field, used to Parameters inside the method  *************
+
+	public void inputdata(String uname, String upass) {
+		WebElement usernameElement = driver.findElement(By.id("user-name"));
+		WebElement passwordElement = driver.findElement(By.id("password"));
+		WebElement buttonElement = driver.findElement(By.id("login-button"));
+	
+	// ****** Here mentioning the parameter name to inject data *************
+
+		usernameElement.sendKeys(uname);
+		passwordElement.sendKeys(upass);
+		buttonElement.click();
+	}
+
+}
