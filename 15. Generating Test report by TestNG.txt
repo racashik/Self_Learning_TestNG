@@ -35,7 +35,7 @@ Class Code:
 
 
 
---> For seeing the report, we will have to regresh the "Maven Project"
+--> For seeing the report, we will have to refresh the "Maven Project"
 --> Go to "Test-Output" file
 --> Go to "index.html" it will be opened on browser
 	--> Click on "Reporter Output"

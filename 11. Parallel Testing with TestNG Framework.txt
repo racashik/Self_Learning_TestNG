@@ -1,10 +1,10 @@
-*************  11 Parallel Testing with TestNG Framework  How to run Test Cases in Parallel *******
+*************  Parallel Testing with TestNG Framework  How to run Test Cases in Parallel *******
 
 Note: Using Parallel execution we can reduce the time, here both Test case will run together
 Note2: We must have to execute the test from the ".XML" file. If execute from the class, will run one by one not Parallely 
 
 --> Create a package and class for Parallel practice
---> make to method test1, and test2
+--> make two method test1, and test2
 --> Convert this class file into "TestNG"
 	--> Set any new "Suite name" (Parallel Testing)
 	--> Set any new "Test Name" (Test Parallel)

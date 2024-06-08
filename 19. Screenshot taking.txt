@@ -1,0 +1,56 @@
+// Using following code can take Screenshot of the page directly from the browser
+
+
+package ScreenShot;
+
+import java.io.File;
+import java.io.IOException;
+import java.time.LocalDateTime;
+
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.io.FileHandler;
+
+public class ScreenShotDemo {
+	private WebDriver driver;
+	
+	public ScreenShotDemo() {
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--remote-allow-origins=*");
+		this.driver = new ChromeDriver(options);
+		this.driver.get("https://www.saucedemo.com/");
+
+		// *********** Where will use the following line code, will take screenshot of that page
+
+		takeScreenShot(this.driver);
+		this.driver.quit();
+	}
+
+	public static void takeScreenShot(WebDriver driver) {
+		
+		File screenShotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		try {
+			LocalDateTime dt = LocalDateTime.now();
+			String timeStampString = dt.toString();
+			timeStampString = timeStampString.replace(":", "-");
+			//System.out.println(timeStampString);
+
+			//******** Here created a folder called "files" inside the root project and linked that path below to store the screenshot
+			
+			FileHandler.copy(screenShotFile, new File("./files/"+timeStampString+".jpg"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void main(String[] args) {
+		new ScreenShotDemo();
+		
+	}
+}
+
+
+

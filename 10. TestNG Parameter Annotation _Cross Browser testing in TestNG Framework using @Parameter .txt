@@ -1,8 +1,8 @@
-**************** 10 TestNG Parameter Annotation  Cross Browser testing in TestNG Framework using @Parameter  **********
+****************  TestNG Parameter Annotation  Cross Browser testing in TestNG Framework using @Parameter  **********
 
 --> Here we will pass "Parameter" value from the "testng.xml" file
 --> Will mention the browser name from the ".XML" file so it will be more easier to execute the code
- N.B: The <parameter> Tag should use before the <Class> tag in .XML file, so it the pass the parameter value first
+ N.B: The <parameter> Tag should use before the <Class> tag in .XML file, so it can pass the parameter value first
 
 
 .XML Code:

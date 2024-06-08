@@ -44,7 +44,6 @@ public class DataInput {
 	}
 
 	@BeforeMethod
-	@Test
 	public void Test1() {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
@@ -52,7 +51,6 @@ public class DataInput {
 	}
 
 	@AfterMethod
-	@Test
 	public void Test2() throws InterruptedException {
 		Thread.sleep(2000);
 		driver.quit();
